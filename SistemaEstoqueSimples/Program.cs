@@ -17,17 +17,6 @@ namespace SistemaEstoqueSimples
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
-
-            // Obtém a lista de produtos do arquivo
-            //List<Produto> listaProdutos = ProdutoDAO.GetProdutos();
-            List<Produto> listaProdutos = new List<Produto>();
-
-
-            // Verifica se a lista de produtos está vazia
-            if (listaProdutos.Count == 0)
-            {
-                MessageBox.Show("Não há produtos disponíveis.");
-            }
         }
     }
 }

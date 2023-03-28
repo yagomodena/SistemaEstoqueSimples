@@ -76,19 +76,32 @@ namespace SistemaEstoqueSimples
             }
         }
 
-        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count > 0)
+            if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
-                int index = dataGridView1.SelectedRows[0].Index; // Obtém o índice da linha selecionada
-                Produto produto = listaProdutos[index]; // Obtém o produto correspondente na lista de produtos
-
+                dataGridView1.CurrentRow.Selected = true;
                 // Mostra as informações do produto nos campos de edição
-                txtNome.Text = produto.Nome;
-                txtMarca.Text = produto.Marca;
-                txtCategoria.Text = produto.Categoria;
-                txtPreco.Text = produto.Preco.ToString();
+                txtNome.Text = dataGridView1.Rows[e.RowIndex].Cells["Nome"].FormattedValue.ToString();
+                txtMarca.Text = dataGridView1.Rows[e.RowIndex].Cells["Marca"].FormattedValue.ToString();
+                txtCategoria.Text = dataGridView1.Rows[e.RowIndex].Cells["Categoria"].FormattedValue.ToString();
+                txtPreco.Text = dataGridView1.Rows[e.RowIndex].Cells["Preco"].FormattedValue.ToString();
             }
         }
+
+        //private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        //{
+        //    if (dataGridView1.SelectedRows.Count > 0)
+        //    {
+        //        int index = dataGridView1.SelectedRows[0].Index; // Obtém o índice da linha selecionada
+        //        Produto produto = listaProdutos[index]; // Obtém o produto correspondente na lista de produtos
+
+        //        // Mostra as informações do produto nos campos de edição
+        //        txtNome.Text = produto.Nome;
+        //        txtMarca.Text = produto.Marca;
+        //        txtCategoria.Text = produto.Categoria;
+        //        txtPreco.Text = produto.Preco.ToString();
+        //    }
+        //}
     }
 }
